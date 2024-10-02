@@ -15,6 +15,7 @@ const StoryViewer = (props) => {
   const slideDuration = 2000;
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const slides = props.slides;
+  const storyId = props.storyId;
 
   const [bookmarkStatus, setBookmarkStatus] = useState(
     slides.map(() => {
@@ -156,7 +157,7 @@ const StoryViewer = (props) => {
   };
 
   const handleShare = (slideIndex) => {
-    const link = `${process.env.REACT_APP_FRONTEND_URL}/?slide=true&id=${slides[slideIndex]._id}`;
+    const link = `${process.env.REACT_APP_FRONTEND_URL}/?slide=true&id=${storyId}`;
     navigator.clipboard.writeText(link);
     const newLinkCopiedStatus = [...linkCopiedStatus];
     newLinkCopiedStatus[slideIndex] = true;

@@ -36,6 +36,9 @@ const YourStories = (props) => {
           body: JSON.stringify({ filters: props.selectedFilters }),
         }
       );
+
+      console.log(response, "response")
+
       if (response.ok) {
         const data = await response.json();
         console.log(data.posts);
@@ -89,6 +92,8 @@ const YourStories = (props) => {
   }
 
   if (yourStories.length === 0) return null;
+
+  console.log(yourStories)
 
   return (
     <>

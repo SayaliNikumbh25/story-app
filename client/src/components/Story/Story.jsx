@@ -7,12 +7,11 @@ const Story = (props) => {
   if (props.story.slides.length === 0) {
     return null;
   }
-
   return (
     <div className={styles.wrapper}>
       <div
         onClick={() => {
-          props.handleStoryViewer(props.story.slides);
+          props.handleStoryViewer(props.story.slides,props.story._id);
         }}
         className={styles.categoryStory}
         style={{

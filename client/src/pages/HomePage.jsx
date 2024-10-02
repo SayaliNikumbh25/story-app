@@ -34,6 +34,7 @@ const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [activeFilter, setActiveFilter] = useState(null); 
   const [story, setStory] = useState(null);
+  const [storyId , setStoryId] = useState(null)
 
   useEffect(() => {
     const handleResize = () => {
@@ -76,8 +77,11 @@ const HomePage = () => {
     }
   };
 
-  const handleStoryViewer = (story) => {
+  const handleStoryViewer = (story,storyId = null) => {
     setStory(story);
+    setStoryId(storyId);
+    console.log(story)
+    console.log(storyId)
     navigate("/?viewstory=true");
   };
 
@@ -136,9 +140,9 @@ const HomePage = () => {
       {displayParamMappings.editstory &&
         (isMobile ? <MobileAddStory /> : <AddStory />)}
       {displayParamMappings.viewstory && (
-        <StoryViewer slides={story} isMobile={isMobile} />
+        <StoryViewer slides={story} storyId = {storyId} isMobile={isMobile} />
       )}
-      {displayParamMappings.slide && <Slide />}
+      {displayParamMappings.slide && <Slide/>}
     </>
   );
 };
